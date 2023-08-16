@@ -81,6 +81,11 @@ int main() //IBMG
                 cout << aux << " " << v[i] << " " << n << endl;
             }
         }
+        if (cant != cantAux)
+            ans--;
+        else if (prim)
+            cant--;
+        cout << ans << " " << cant << endl;
     }
     return 0;
 }

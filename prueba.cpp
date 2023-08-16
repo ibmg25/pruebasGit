@@ -51,6 +51,36 @@ int main() //IBMG
             else
                 v.pb(a);
         }
+        ans = v.size();
+        if (v[ans-1] < n)
+            v.pb(n), ult = false;
+        cant = v.size();
+        if (!ult)
+            cant--;
+        if (!prim)
+            cant--;
+        int cantAux = cant;
+        ffor(i, 1, v.size())
+            ans += (v[i]-v[i-1]-1) / d;
+        ffor(i, 1, v.size())
+        {
+            if (v[i] != n)
+            {
+                int aux = v[i-1] + ((v[i]-v[i-1]-1)/d)*d, one = 1;
+                if (v[i+1] == n && !ult)
+                    one = 0;
+                if ((v[i+1] - aux - one) / d > (v[i+1] - v[i] - one) / d)
+                    cant--;
+                cout << aux << " " << v[i] << " " << v[i+1] << endl;
+            }
+            else if (ult)
+            {
+                int aux = v[i-1] + ((v[i]-v[i-1]-1)/d)*d;
+                if ((n - aux - 1) > d)
+                    cant--;
+                cout << aux << " " << v[i] << " " << n << endl;
+            }
+        }
     }
     return 0;
 }
